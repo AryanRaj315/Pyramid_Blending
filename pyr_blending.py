@@ -141,24 +141,3 @@ def pyramid_blending(im1, im2, mask, max_levels, filter_size_im, filter_size_mas
 
     return np.clip(laplacian_to_image(Lout, filter_vec, coeff), 0, 1)
 
-
-def blending_im(im1, im2, mask):
-    blended_im = np.zeros(im1.shape)
-    blended_im[:, :, 0] = pyramid_blending(im1[:, :, 0], im2[:, :, 0], mask, 3, 3, 3)
-    blended_im[:, :, 1] = pyramid_blending(im1[:, :, 1], im2[:, :, 1], mask, 3, 3, 3)
-    blended_im[:, :, 2] = pyramid_blending(im1[:, :, 2], im2[:, :, 2], mask, 3, 3, 3)
-
-    plt.figure()
-    plt.subplot(221)
-    plt.imshow(im1)
-    plt.subplot(222)
-    plt.imshow(im2)
-    plt.subplot(223)
-    plt.imshow(mask, cmap="gray")
-    plt.title("Mask")
-    plt.subplot(224)
-    plt.title("Blended Image")
-    plt.imshow(blended_im)
-    plt.show()
-
-    return im1, im2, mask, blended_im
