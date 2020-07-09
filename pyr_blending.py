@@ -1,7 +1,8 @@
 import numpy as np
+import cv2
 import scipy.ndimage.filters
 from scipy.signal import convolve
-from scipy.misc.pilutil import imread
+# from scipy.misc.pilutil import imread
 import matplotlib.pyplot as plt
 import os
 
@@ -17,9 +18,9 @@ def read_image(fileame, representation):
         output should be a grayscale image (1) or an RGB image (2)"""
 
     if representation == GRAYSCALE_REP:
-        return imread(fileame, True).astype(np.float64) / MAX_GRAY_LEVEL_VAL
+        return cv2.imread(fileame, 0).astype(np.float64) / MAX_GRAY_LEVEL_VAL
     elif representation == RGB_REP:
-        return imread(fileame).astype(np.float64) / MAX_GRAY_LEVEL_VAL
+        return cv2imread(fileame).astype(np.float64) / MAX_GRAY_LEVEL_VAL
 
 
 def gaussian_filter(filter_size):
