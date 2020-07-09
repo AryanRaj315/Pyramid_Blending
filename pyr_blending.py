@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.ndimage.filters
 from scipy.signal import convolve
-from scipy.misc import imread
+from scipy.misc.pilutil import imread
 import matplotlib.pyplot as plt
 import os
 
